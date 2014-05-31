@@ -3,12 +3,9 @@ require 'rack/test'
 
 describe "Books" do
 	subject { page }
-    before do
-    @book = Book.create(name:"Example name", author:"Example author", cover_file_name: "Makbet")
-    end
-	
+   
     describe "page for user should have right features" do
-        before { visit books_path }
+        before { visit root_path }
         it { should_not have_link('Edit', href: edit_book_path(@book)) }
         it { should_not have_link('Destroy')}
         it { should_not have_link('New Book', href: new_book_path) }
@@ -24,7 +21,7 @@ describe "Books" do
         end
     end
 
-    describe "page for admin with right features" do
+    /describe "page for admin with right features" do
         before { visit admin_path }
         it { should have_link('Edit', href: edit_book_path(@book)) }
         it { should have_link('Destroy')}
@@ -53,5 +50,5 @@ describe "Books" do
         it { should have_button("Create Book") }
 
         end
-    end
+    end/
 end

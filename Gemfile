@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'database_cleaner', '~> 1.3.0'
 #devise gem
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
