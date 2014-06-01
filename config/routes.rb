@@ -1,7 +1,12 @@
 OnlineBookshelf::Application.routes.draw do
   root 'books#index'
+
   devise_for :users
-  resources :books
+  resources :books do
+    get 'User.books/:id' => 'books#get_book', as: 'get_book'
+   # match 'User.books/:id', to: 'books#get', via: [:post]
+    get '/my_books' => 'books#my_books', as: 'my_books'
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

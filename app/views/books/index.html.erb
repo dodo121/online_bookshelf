@@ -16,9 +16,10 @@
       <tr>
         <td><%= book.name %></td>
         <td><%= book.author %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <% if user_signed_in? %>
+        <td><%= link_to 'Get this book',  book_get_book_path(current_user,book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

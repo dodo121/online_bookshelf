@@ -60,7 +60,14 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def get_book
+    @book = Book.find(params[:id])
+    current_user.books << @book
+    redirect_to root_path
+  end
+  def my_books
+    @user_books = current_user.books.all
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

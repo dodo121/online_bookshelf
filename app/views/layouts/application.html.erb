@@ -14,7 +14,7 @@
     <li class="active">
     <li><%= link_to "Home", books_path %></li>
     <% if user_signed_in? %>
-    <li><%= link_to "My books", "#" %></li>
+    <li><%= link_to "My books",  book_my_books_path(current_user) %></li>
     <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
     <% else %>
     <li><%= link_to "Sing in!", new_user_session_path %> </li>
