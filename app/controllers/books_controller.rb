@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_id, only: [:my_books, :delete_my_book]
   # GET /books
   # GET /books.json
   def index
@@ -68,6 +68,12 @@ class BooksController < ApplicationController
   def my_books
     @user_books = current_user.books.all
   end
+  def delete_my_book
+    @book = current_user.books.find(params[:id])
+    current_user.books.delete(@book)
+  end
+    
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -78,4 +84,7 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :author, :cover)
     end
+    def set_id
+       @user_id = current_user.id
+     end
 end

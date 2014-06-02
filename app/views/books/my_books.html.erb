@@ -1,5 +1,8 @@
 <% @user_books.each do |x| %>
 <%= x.name %>
 <%= x.author %>
+<%= x.id %>
+<%= link_to "Delete", book_delete_my_book_path(@book, current_user), method: "delete" %>
 tu musi być okładka, rozwiajna
 <% end %>
+Your id:<%=  @user_id %>
