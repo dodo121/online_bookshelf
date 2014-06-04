@@ -10,8 +10,9 @@ describe "Books" do
         it { should_not have_link('Edit', href: edit_book_path(book)) }
         it { should_not have_link('Destroy')}
         it { should_not have_link('Add new Book', href: new_book_path) }
-        it { should have_content('List of all the books')}
         it { should_not have_link('Get this book')}
+        it { should have_content('List of all the books')}
+        it { should have_link('Help')}
     end
     describe "app safety for non signed_in user" do
         describe "in edit page" do

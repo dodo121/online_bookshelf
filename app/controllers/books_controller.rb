@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
   end
-  #about page
+  #help page
   def help
   end
   # GET /books/new
@@ -28,29 +28,20 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
-    respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @book }
+        redirect_to @book, notice: 'Book was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :no_content }
+    if @book.update(book_params)
+        redirect_to @book, notice: 'Book was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+        render action: 'edit' 
     end
   end
 
@@ -58,11 +49,9 @@ class BooksController < ApplicationController
   # DELETE /books/1.json
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url }
-      format.json { head :no_content }
-    end
+    redirect_to books_url 
   end
+
   def get_book
     current_user.books << @book
     flash[:notice] = "Book added to your bookshelf!"

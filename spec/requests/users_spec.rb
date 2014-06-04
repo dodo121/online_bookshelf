@@ -7,7 +7,7 @@ describe "User" do
 	let(:user){ FactoryGirl.create(:user)}
 	let(:book){ FactoryGirl.create(:book)}
 
-	describe "after singin have right features" do
+	describe "after sing in" do
 		before do
 			visit new_user_session_path
 			fill_in "Email", with: user.email
@@ -21,7 +21,7 @@ describe "User" do
 		it { should have_content("Name" && "Author")}
 		it { should_not have_link('Sign in', href: new_user_session_path)}
 
-		describe "after correct sign out" do
+		describe "and after sign out" do
 			before do
 					visit root_path
 					click_link 'Sign out'
@@ -41,11 +41,9 @@ describe "User" do
 			fill_in "Password", with: "janjanjan"
 			fill_in "Password confirmation", with: "janjanjan"
 			click_button "Sign up"
-			visit root_path
 		end
-		it { should have_content("Name" && "Author")}
+		it { should have_link("Sign in", href: new_user_session_path) }
 		it { should have_link("Sign out", href:  destroy_user_session_path) }
 		it { should have_link("My books", href: my_books_path) }
-		#it { should have_link("Sign in", href: new_user_session_path) }
 	end
 end
