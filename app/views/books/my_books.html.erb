@@ -1,8 +1,23 @@
-<% @user_books.each do |x| %>
-<%= x.name %>
-<%= x.author %>
-<%= x.id %>
-<%= link_to "Delete", book_delete_my_book_path(@book, current_user), method: "delete" %>
-tu musi być okładka, rozwiajna
+<table class="table table-striped">
+	<thead>
+		<tr>
+		<th>Name</th>
+		<th>Author</th>
+		<th>Cover</th>
+		<th>Options</th>
+	</tr>
+	</thead>
+<tbody>
+	<% @user_books.each do |book| %>
+<tr>
+<td><%= book.name %></td>
+<td><%= book.author %></td>
+<td><%= image_tag book.cover.url(:thumb) %></td>
+<td><%= link_to "Delete", delete_my_book_book_path(book), method: "delete" %></td>
 <% end %>
-Your id:<%=  @user_id %>
+</tr>
+</table>
+</tbody>
+
+
+ 

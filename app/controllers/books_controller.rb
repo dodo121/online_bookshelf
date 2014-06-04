@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :get_book]
   before_action :set_id, only: [:my_books, :delete_my_book]
+  before_action :admin? , only: [:new, :edit, :show, :create, :update, :destroy]
   # GET /books
   # GET /books.json
   def index
@@ -11,7 +12,9 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
   end
-
+  #about page
+  def help
+  end
   # GET /books/new
   def new
     @book = Book.new
@@ -61,8 +64,8 @@ class BooksController < ApplicationController
     end
   end
   def get_book
-    @book = Book.find(params[:id])
     current_user.books << @book
+    flash[:notice] = "Book added to your bookshelf!"
     redirect_to root_path
   end
   def my_books
@@ -70,7 +73,10 @@ class BooksController < ApplicationController
   end
   def delete_my_book
     @book = current_user.books.find(params[:id])
-    current_user.books.delete(@book)
+      if current_user.books.delete(@book)
+        flash[:notice] = "Book deleted from your bookshelf!"
+      redirect_to my_books_path
+    end
   end
     
 
@@ -86,5 +92,12 @@ class BooksController < ApplicationController
     end
     def set_id
        @user_id = current_user.id
-     end
+    end
+
+    def admin?
+      if user_signed_in? && current_user.admin == true
+        else
+          redirect_to root_path
+      end
+    end
 end

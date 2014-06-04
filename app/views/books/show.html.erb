@@ -1,15 +1,20 @@
 <p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+	<% if current_user.admin? %>
+	<p>
+  		<strong>Name:</strong>
+  		<%= @book.name %>
+	</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @book.name %>
-</p>
+	<p>
+  		<strong>Author:</strong>
+  		<%= @book.author %>
+	</p>
+	<%= image_tag @book.cover.url(:medium) %>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-<%= image_tag @book.cover.url(:medium) %>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+	<%= link_to 'Edit', edit_book_path(@book) %> |
+	<%= link_to 'Back', root_path %>
+<% else %>
+redirect_to root_path
+<% end %>
+<% end %>

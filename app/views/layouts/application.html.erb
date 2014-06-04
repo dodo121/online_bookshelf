@@ -7,25 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>    
-	<div class="navbar">
+	
+  <div class="navbar">
     <div class="navbar-inner">
     <a class="brand">Online Bookshelf</a>
     <ul class="nav">
     <li class="active">
     <li><%= link_to "Home", books_path %></li>
-
+    
     <% if user_signed_in? %>
-    <li><%= link_to "My books",  my_books_path %></li>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
-    <% else %>
+      <li><%= link_to "My books",  my_books_path %></li>
+      <li><%= link_to "My account",  edit_user_registration_path %></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
 
-    <li><%= link_to "Sing in!", new_user_session_path %> </li>
-    <li><%= link_to "Sing up!", new_user_registration_path %> </li>
+    <% if current_user.admin? %>
+      <li><%= link_to 'Add new book', new_book_path %></li>
+      <% end %>
+      <% else %>
+      <li><%= link_to "Sign in", new_user_session_path %> </li>
+      <li><%= link_to "Sign up", new_user_registration_path %> </li>
     <% end %> 
+    <li><%= link_to "Help", help_path %> </li>
     </ul>
     </div>
     </div>
-
+<%= render 'layouts/messages' %>
 <%= yield %>
 
 </div>

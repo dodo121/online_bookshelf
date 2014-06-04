@@ -17,3 +17,4 @@
 /user accounts/
 /testsupertest@test.pl/
 /<%= link_to "Delete", book_delete_my_book_path(@book, current_user), method: "delete" %>/
+/admin@admin.com/adminadmin/

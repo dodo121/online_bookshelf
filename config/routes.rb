@@ -1,12 +1,14 @@
 OnlineBookshelf::Application.routes.draw do
   root 'books#index'
+  match '/help',      to: 'books#help',       via: 'get'
   match '/my_books',  to: 'books#my_books',   via: 'get'
   devise_for :users
   resources :books do
-  get 'User.books/:id' => 'books#get_book', as: 'get_book'
-  delete 'User.books/:id' => 'books#delete_my_book', as: 'delete_my_book'
+    member do
+      post 'get_book'
+      delete 'delete_my_book'
+    end
   end
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
