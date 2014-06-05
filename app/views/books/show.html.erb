@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
-	<% if current_user.admin? %>
+
 	<p>
   		<strong>Name:</strong>
   		<%= @book.name %>
@@ -10,11 +9,12 @@
   		<strong>Author:</strong>
   		<%= @book.author %>
 	</p>
+	<p>
 	<%= image_tag @book.cover.url(:medium) %>
 
-	<%= link_to 'Edit', edit_book_path(@book) %> |
-	<%= link_to 'Back', root_path %>
-<% else %>
-redirect_to root_path
-<% end %>
-<% end %>
+	<%= link_to 'Edit', edit_book_path(@book), class: "btn btn-inverse" %> |
+	<%= link_to 'Back', root_path, class: "btn btn-info" %>
+</p>
+
+
+	

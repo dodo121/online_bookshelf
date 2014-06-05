@@ -37,12 +37,12 @@ describe "User" do
 	describe "can create account" do
 		before do
 			visit  new_user_registration_path
-			fill_in "Email", with: "testjan@kowalski"
+			fill_in "Email", with: "testjan@kowalski.com"
 			fill_in "Password", with: "janjanjan"
 			fill_in "Password confirmation", with: "janjanjan"
 			click_button "Sign up"
 		end
-		it { should have_link("Sign in", href: new_user_session_path) }
+		it { should_not have_link("Sign in", href: new_user_session_path) }
 		it { should have_link("Sign out", href:  destroy_user_session_path) }
 		it { should have_link("My books", href: my_books_path) }
 	end
