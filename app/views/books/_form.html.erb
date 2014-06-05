@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+<br><div class="field">
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
+  </div></br>
+<br><div class="field">
+    <%= f.label :author %>
     <%= f.text_field :author %>
-  </div>
-  <%= f.file_field :cover %>
+  </div></br>
+<p><br>Add cover:<p/><%= f.file_field :cover, title:"Add cover" %></br>
   <div class="actions">
     <%= f.submit %>
   </div>
