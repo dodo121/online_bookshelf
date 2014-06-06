@@ -7,6 +7,7 @@ OnlineBookshelf::Application.routes.draw do
     member do
       post 'get_book'
       delete 'delete_my_book'
+      delete 'delete_cover'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

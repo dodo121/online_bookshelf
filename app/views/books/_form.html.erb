@@ -2,7 +2,6 @@
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
       <ul>
       <% @book.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,15 +10,21 @@
     </div>
   <% end %>
 
-<br><div class="field">
+<div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </div></br>
-<br><div class="field">
+  </div>
+<div class="field">
     <%= f.label :author %>
     <%= f.text_field :author %>
-  </div></br>
-<p><br>Add cover:<p/><%= f.file_field :cover, title:"Add cover" %></br>
+  </div>
+<div>
+    <p>Add or delete cover:</p>
+  <%= f.file_field :cover, title:"Add cover" %> 
+  <% if @book.cover? %>
+  <%= link_to "Delete cover", delete_cover_book_path(@book), method: :delete , class: 'btn'%>
+  <% end %>
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>
