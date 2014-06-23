@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :get_book, :delete_cover]
   before_action :admin? , only: [:new, :edit, :show, :create, :update, :destroy, :delete_cover]
+  before_action :authenticate_user!, except: :index
   # GET /books
   def index
     @books = Book.all
@@ -61,7 +62,12 @@ class BooksController < ApplicationController
   end
   
   def my_books
-    @user_books = current_user.books.all
+    if user_signed_in?
+      @user_books = current_user.books.all
+    else
+      flash[:error] = "Please sign in"
+      redirect_to root_path
+    end
   end
 
   def delete_my_book
