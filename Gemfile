@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 gem 'database_cleaner', '~> 1.3.0'
 #devise gem
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.1'
 #paperclip
 gem 'paperclip', github: 'thoughtbot/paperclip'
 #mongoid
