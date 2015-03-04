@@ -1,4 +1,4 @@
-<%= form_for @book , :html => { :multipart => true } do |f| %>
+<%= form_for @book, class: 'form-control', :html => { :multipart => true } do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -10,21 +10,21 @@
     </div>
   <% end %>
 
-<div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-<div class="field">
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
-<div>
-    <p>Add or delete cover:</p>
-  <%= f.file_field :cover, title:"Add cover" %> 
-  <% if @book.cover? %>
-  <%= link_to "Delete cover", delete_cover_book_path(@book), method: :delete , class: 'btn'%>
-  <% end %>
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
 </div>
+
+<div class="form-group">
+  <%= f.label :author %>
+  <%= f.text_field :author, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <%= f.label :add_cover %>
+  <%= f.file_field :cover, title:"Add cover", class: 'form-control' %>
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

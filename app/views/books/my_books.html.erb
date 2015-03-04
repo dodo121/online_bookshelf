@@ -15,11 +15,9 @@
 <td><%= book.name %></td>
 <td><%= book.author %></td>
 <td><%= image_tag book.cover.url(:thumb) %></td>
-<td><%= link_to "Delete", delete_my_book_book_path(book), method: "delete", class: 'btn btn-inverse'%></td>
+<td><%= link_to "Delete", delete_my_book_book_path(book), method: "delete", class: 'btn btn-danger'%></td>
 <% end %>
 </tr>
 </table>
 </tbody>
 </br>
-
- 

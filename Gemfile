@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.2.0'
 gem 'database_cleaner', '~> 1.3.0'
 #devise gem
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.2.0'
 #paperclip
 gem 'paperclip', github: 'thoughtbot/paperclip'
 #mongoid
@@ -14,13 +14,10 @@ gem 'bson_ext'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 #bootstrap
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'sass-rails', '>= 3.2'
 
-gem "twitter-bootstrap-rails"
-gem "therubyracer"
-gem "less-rails"
 gem 'libv8', '~> 3.11.8.3'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -46,7 +43,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 group :test, :development do
-	
+
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'guard-rspec'
